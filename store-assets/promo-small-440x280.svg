@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="440" height="280" viewBox="0 0 440 280" role="img" aria-labelledby="title desc">
+  <title id="title">OLWLG Beautifier promotional tile</title>
+  <desc id="desc">OLWLG Beautifier logo beside a stylized math-trade matrix.</desc>
+  <defs>
+    <linearGradient id="background" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#111814"/>
+      <stop offset="1" stop-color="#1f2d3a"/>
+    </linearGradient>
+    <linearGradient id="mark" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#88bdf2"/>
+      <stop offset="1" stop-color="#384959"/>
+    </linearGradient>
+    <filter id="shadow" x="-30%" y="-30%" width="160%" height="160%">
+      <feDropShadow dx="0" dy="8" stdDeviation="10" flood-color="#000" flood-opacity=".28"/>
+    </filter>
+  </defs>
+
+  <rect width="440" height="280" rx="24" fill="url(#background)"/>
+  <circle cx="397" cy="16" r="120" fill="#88bdf2" opacity=".08"/>
+  <circle cx="22" cy="280" r="130" fill="#6a89a7" opacity=".09"/>
+
+  <g opacity=".72" transform="translate(272 50)">
+    <rect width="128" height="180" rx="18" fill="#fff" fill-opacity=".055" stroke="#fff" stroke-opacity=".11"/>
+    <g fill="none" stroke="#cfe0ee" stroke-opacity=".22">
+      <path d="M0 45h128M0 90h128M0 135h128"/>
+      <path d="M42 0v180M85 0v180"/>
+    </g>
+    <g fill="#88bdf2">
+      <rect x="13" y="13" width="18" height="18" rx="4"/>
+      <rect x="55" y="58" width="18" height="18" rx="4"/>
+      <rect x="98" y="103" width="18" height="18" rx="4"/>
+      <rect x="13" y="148" width="18" height="18" rx="4"/>
+    </g>
+    <g fill="none" stroke="#23303c" stroke-linecap="round" stroke-linejoin="round" stroke-width="3">
+      <path d="m17 22 4 4 7-9"/>
+      <path d="m59 67 4 4 7-9"/>
+      <path d="m102 112 4 4 7-9"/>
+      <path d="m17 157 4 4 7-9"/>
+    </g>
+  </g>
+
+  <g transform="translate(42 50)">
+    <rect width="76" height="76" rx="22" fill="#384959" filter="url(#shadow)"/>
+    <rect x="10" y="10" width="56" height="56" rx="15" fill="#bdddfc"/>
+    <text x="38" y="49" fill="#384959" font-family="Arial, Helvetica, sans-serif" font-size="29" font-weight="900" letter-spacing="-2" text-anchor="middle">OB</text>
+  </g>
+
+  <text x="42" y="158" fill="#f6f7f3" font-family="Arial, Helvetica, sans-serif" font-size="27" font-weight="800" letter-spacing="-1">OLWLG Beautifier</text>
+  <text x="42" y="187" fill="#bdc7bf" font-family="Arial, Helvetica, sans-serif" font-size="14" font-weight="600">A clearer math-trade workflow</text>
+  <rect x="42" y="212" width="177" height="30" rx="15" fill="#88bdf2" fill-opacity=".12" stroke="#88bdf2" stroke-opacity=".28"/>
+  <text x="130.5" y="232" fill="#bdddfc" font-family="Arial, Helvetica, sans-serif" font-size="11" font-weight="700" letter-spacing=".5" text-anchor="middle">FOCUS • MATRIX • REVIEW</text>
+</svg>
+

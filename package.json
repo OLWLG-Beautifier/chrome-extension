@@ -1,0 +1,38 @@
+{
+  "name": "olwlg-beautifier",
+  "version": "1.0.2",
+  "private": true,
+  "description": "A modern Chrome extension that improves the OLWLG interface.",
+  "scripts": {
+    "assets:store": "node scripts/create-store-assets.mjs",
+    "dev": "next dev",
+    "build": "npm run clean && next build && npm run build:extension",
+    "build:extension": "node scripts/build-extension.mjs",
+    "clean": "node scripts/clean.mjs",
+    "lint": "eslint .",
+    "package:extension": "npm run build && npm run assets:store && node scripts/package-extension.mjs",
+    "screenshot:store": "node scripts/capture-store-screenshot.mjs",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "next": "16.2.12",
+    "react": "19.2.8",
+    "react-dom": "19.2.8"
+  },
+  "devDependencies": {
+    "@iconify-json/lucide": "^1.2.120",
+    "@types/chrome": "0.2.2",
+    "@types/node": "^24.0.0",
+    "@types/react": "^19.0.0",
+    "@types/react-dom": "^19.0.0",
+    "esbuild": "0.28.1",
+    "eslint": "9.39.5",
+    "eslint-config-next": "16.2.12",
+    "typescript": "6.0.3",
+    "ws": "^8.18.3"
+  },
+  "overrides": {
+    "postcss": "8.5.24",
+    "sharp": "0.35.3"
+  }
+}
