@@ -6,7 +6,13 @@
   "description": "A calmer, clearer interface for the OLWLG math trade tools.",
   "minimum_chrome_version": "120",
   "permissions": ["storage"],
-  "host_permissions": ["https://bgg.activityclub.org/olwlg/*"],
+  "host_permissions": [
+    "https://bgg.activityclub.org/olwlg/*",
+    "https://boardgamegeek.com/*"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
   "action": {
     "default_title": "OLWLG Beautifier",
     "default_popup": "index.html",

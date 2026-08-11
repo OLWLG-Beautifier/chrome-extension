@@ -15,8 +15,16 @@ Requirements: Node.js 20.9 or newer.
 
 ```bash
 npm install
+cp .env.example .env.local
+# Add your BGG_API_TOKEN value to .env.local.
 npm run build
 ```
+
+The BGG application token is injected only into the generated background
+service worker. `.env.local`, `dist/`, and release archives are excluded from
+Git. Because the finished extension runs on users' devices, its bundled token
+must still be treated as extractable and should be monitored and rotated if
+misused.
 
 Then:
 
@@ -35,7 +43,8 @@ locally with the extension.
 On the full math-trade catalog (`viewlist.cgi?...&viewall=1`), the extension
 adds live item search, participant, item-type, BGG-rank, and collection-status
 filters, card sorting, result counts, guide-aware
-tooltips, money-range filtering for alternative items, highlighted status
+tooltips, progressively loaded BoardGameGeek cover images, money-range
+filtering for alternative items, highlighted status
 messages, and loading feedback. It adapts each server-rendered table row into a
 full-width item card while retaining the source table in the DOM so OLWLG's
 existing actions continue to work. Cards separate the linked title, utility
@@ -75,6 +84,7 @@ reload the unpacked extension after changing extension files.
 
 - `pages/` and `styles/`: Next.js popup
 - `extension/manifest.json`: Manifest V3 configuration
+- `extension/background/`: authenticated, rate-limited BGG image requests and cache
 - `extension/content/`: code and CSS injected into OLWLG
 - `scripts/`: production build assembly
 - `dist/`: load this generated directory in Chrome

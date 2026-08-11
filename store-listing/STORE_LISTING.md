@@ -25,6 +25,7 @@ Features include:
 
 - A redesigned math-trade dashboard and navigation.
 - Search, filters, sorting, and clearer item cards for trade catalogs.
+- Progressively loaded BoardGameGeek cover images for catalog items.
 - Focused and matrix want-list editors that remain synchronized with OLWLG's
   original form controls.
 - Sticky matrix headings, drag-to-pan navigation, contextual tooltips, and

@@ -20,7 +20,7 @@ export default function Privacy() {
           <div>
             <p className="eyebrow">OLWLG Beautifier</p>
             <h1>Privacy Policy</h1>
-            <p className="privacy-effective">Effective August 2, 2026</p>
+            <p className="privacy-effective">Effective August 9, 2026</p>
           </div>
         </header>
 
@@ -51,7 +51,9 @@ export default function Privacy() {
             <p>
               Information is used only to restyle and reorganize OLWLG and to
               provide search, filtering, matrix navigation, review, deadline,
-              and read-only-state features.
+              and read-only-state features. When an item catalog is opened,
+              the extension also retrieves its cover images from the
+              registered BoardGameGeek XML API.
             </p>
           </section>
 
@@ -64,16 +66,23 @@ export default function Privacy() {
               </li>
               <li>
                 Browser local and session storage may retain limited interface
-                state, trade identifiers, deadline timestamps, and a local
-                participation result.
+                state, trade identifiers, deadline timestamps, a local
+                participation result, and cached public BGG image URLs.
               </li>
               <li>
                 Page content and form state are not transmitted to the
                 developer.
               </li>
               <li>
-                Requests to OLWLG or BoardGameGeek are sent directly to those
-                services over HTTPS and may use the user&apos;s existing session.
+                When an item catalog is opened, public numeric BGG item IDs
+                already present in OLWLG links are sent directly to the
+                BoardGameGeek XML API over HTTPS to retrieve cover images. No
+                participant usernames or want-list state are included.
+              </li>
+              <li>
+                Other requests to OLWLG or BoardGameGeek are sent directly to
+                those services over HTTPS and may use the user&apos;s existing
+                session.
               </li>
             </ul>
           </section>
@@ -91,9 +100,10 @@ export default function Privacy() {
             <h2>Retention and control</h2>
             <p>
               Users can disable the extension from its popup or remove it in
-              Chrome. Chrome Sync data is controlled through the user&apos;s Chrome
-              account. Local OLWLG state can be removed through Chrome&apos;s site
-              data controls for bgg.activityclub.org.
+              Chrome. Removing it also removes cached BGG image URLs. Chrome
+              Sync data is controlled through the user&apos;s Chrome account. Local
+              OLWLG state can be removed through Chrome&apos;s site data controls
+              for bgg.activityclub.org.
             </p>
           </section>
 

@@ -23,7 +23,8 @@ links, forms, and actions.
 1. From the OLWLG dashboard, open an available active or previous math trade.
 2. Open its item catalog.
 3. Confirm that the extension provides catalog cards, filters, sorting,
-   information panels, and locally generated deadline/status presentation.
+   information panels, progressively loaded BGG cover images, and locally
+   generated deadline/status presentation.
 
 ## Authenticated features
 
@@ -40,14 +41,19 @@ than adding credentials to this repository or package.
 - `storage`: saves the enabled preference.
 - `https://bgg.activityclub.org/olwlg/*`: injects and operates the enhanced UI
   only on OLWLG pages.
+- `https://boardgamegeek.com/*`: lets the background service worker request
+  cover-image URLs from the registered BGG XML API. The extension does not
+  inject code into BoardGameGeek pages.
 
 ## Network behavior
 
 The extension contains no analytics and communicates with no
-developer-operated server. It may request additional OLWLG or BoardGameGeek
-HTML over HTTPS to display a user-facing catalog or marketplace view.
+developer-operated server. When an OLWLG catalog opens, it sends only the
+public numeric BGG item IDs present in that catalog to the BoardGameGeek XML
+API and locally caches the returned image URLs. It may also request additional
+OLWLG or BoardGameGeek HTML over HTTPS to display a user-facing catalog or
+marketplace view.
 
 ## Contact
 
 olwlg.beautifier@gmail.com
-

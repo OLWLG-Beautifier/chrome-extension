@@ -2,9 +2,14 @@ node_modules
 .next
 out
 dist
+*.tsbuildinfo
 *.log
 .DS_Store
 
 # Generated extension packages
 release/
 olwlg-beautifier-*/
+
+# Local secrets
+.env*
+!.env.example

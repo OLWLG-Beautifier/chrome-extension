@@ -1,0 +1,89 @@
+html.olwlg-beautified .olwlg-ui-button {
+  display: inline-flex;
+  min-height: 38px;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  padding: 8px 13px;
+  border: 1px solid transparent;
+  border-radius: 7px;
+  font: inherit;
+  font-size: 13px;
+  font-weight: 750;
+  line-height: 1.2;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+html.olwlg-beautified .olwlg-ui-button--full {
+  border-color: #384959 !important;
+  background: #384959 !important;
+  color: #fff !important;
+}
+
+html.olwlg-beautified .olwlg-ui-button--full:hover {
+  border-color: #2c3944 !important;
+  background: #2c3944 !important;
+  color: #fff !important;
+}
+
+html.olwlg-beautified .olwlg-ui-button--outline {
+  border-color: #aebbc5 !important;
+  background: #fff !important;
+  color: #384959 !important;
+}
+
+html.olwlg-beautified .olwlg-ui-button--outline:hover {
+  border-color: #718391 !important;
+  background: #f3f7f9 !important;
+  color: #263744 !important;
+}
+
+html.olwlg-beautified .olwlg-ui-button:focus-visible,
+html.olwlg-beautified .olwlg-ui-link:focus-visible,
+html.olwlg-beautified .olwlg-ui-input:focus-visible {
+  outline: 3px solid rgba(76, 130, 173, 0.24);
+  outline-offset: 2px;
+}
+
+html.olwlg-beautified .olwlg-ui-button:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+html.olwlg-beautified .olwlg-ui-icon-button {
+  width: 38px;
+  min-width: 38px;
+  padding: 7px;
+}
+
+html.olwlg-beautified .olwlg-ui-icon-button svg {
+  width: 18px;
+  height: 18px;
+}
+
+html.olwlg-beautified .olwlg-ui-buttons-block {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+html.olwlg-beautified .olwlg-ui-input {
+  min-height: 38px;
+  padding: 8px 11px;
+  border: 1px solid #b8c5cf;
+  border-radius: 7px;
+  background: #fff;
+  color: #293f52;
+  font: inherit;
+  font-size: 13px;
+}
+
+html.olwlg-beautified .olwlg-ui-dropdown-field {
+  display: grid;
+  gap: 5px;
+  color: #536779;
+  font-size: 11px;
+  font-weight: 800;
+}

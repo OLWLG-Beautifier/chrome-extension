@@ -14,9 +14,10 @@ filtering, navigation, deadline, want-list editing, and review controls.
 ### `storage`
 
 Stores only the user's enabled or disabled preference in Chrome Sync. The
-extension also uses ordinary browser local and session storage on OLWLG pages
-for limited interface state, calculated deadline timestamps, remembered trade
-status, and a local participation result.
+extension also uses Chrome Local Storage to cache public BGG item-image URLs
+and the last API request time. Ordinary browser local and session storage on
+OLWLG pages retains limited interface state, calculated deadline timestamps,
+remembered trade status, and a local participation result.
 
 ### Host access: `https://bgg.activityclub.org/olwlg/*`
 
@@ -24,6 +25,12 @@ Required to inject the enhanced interface into OLWLG pages and read the
 existing page structure needed for the user-facing catalog, filtering,
 want-list, deadline, and review features. The extension does not run on
 unrelated websites.
+
+### Host access: `https://boardgamegeek.com/*`
+
+Required by the extension service worker to request cover-image URLs from the
+registered BoardGameGeek XML API for the numeric BGG item IDs found in an open
+OLWLG catalog. No content script is injected into BoardGameGeek pages.
 
 ### Web-accessible resource
 
@@ -59,8 +66,11 @@ browsing history outside OLWLG.
 - Not sold or shared with third parties.
 - Not used for advertising, profiling, creditworthiness, or lending.
 - Not used for any purpose unrelated to the extension's single purpose.
-- Requests to OLWLG or BoardGameGeek are made directly over HTTPS only when
-  needed for a user-facing feature and may use the user's existing site
+- Public numeric BGG item IDs are sent directly to the BoardGameGeek XML API
+  over HTTPS only when an OLWLG item catalog is opened, and returned image URLs
+  are cached locally to reduce requests.
+- Other requests to OLWLG or BoardGameGeek are made directly over HTTPS only
+  when needed for a user-facing feature and may use the user's existing site
   session.
 
 ## Limited Use certification
@@ -73,4 +83,3 @@ Store User Data Policy, including the Limited Use requirements.
 Enter a permanent, publicly accessible HTTPS URL for the policy. The repository
 provides both `PRIVACY.md` and a statically exported `/privacy` page, but the
 publisher must deploy one of them before submission.
-

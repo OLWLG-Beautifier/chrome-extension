@@ -1,6 +1,6 @@
 # OLWLG Beautifier Privacy Policy
 
-Effective date: August 2, 2026
+Effective date: August 9, 2026
 
 OLWLG Beautifier is a browser extension that reorganizes and restyles the
 OLWLG math-trade interface. The extension is independent and is not affiliated
@@ -25,7 +25,8 @@ information locally in the browser:
   page. This is used only to determine whether editing controls should be
   available for the current math trade.
 - Interface state such as whether the extension is enabled, selected display
-  mode, remembered trade status, and calculated deadline timestamps.
+  mode, remembered trade status, calculated deadline timestamps, and cached
+  BoardGameGeek cover-image URLs.
 
 The extension does not read passwords or payment information.
 
@@ -36,6 +37,8 @@ Information is used only to:
 - Restyle and reorganize the OLWLG interface.
 - Provide search, filtering, matrix navigation, review, deadline, and
   read-only-state features.
+- Retrieve cover images from the registered BoardGameGeek XML API when an
+  OLWLG item catalog is opened.
 - Keep the extension's enabled preference and limited interface state between
   page visits.
 - Request additional OLWLG or BoardGameGeek pages over HTTPS when necessary to
@@ -44,13 +47,19 @@ Information is used only to:
 ## Storage and transmission
 
 - Chrome Sync stores only the extension's enabled or disabled preference.
+- Chrome Local Storage caches public BGG item-image URLs and the last API
+  request time to reduce requests and respect BGG's rate limits.
 - Browser local storage and session storage may retain interface state, math
   trade identifiers, deadline timestamps, and a local participation result.
 - OLWLG page content and form state are processed in the browser and are not
   transmitted to the developer.
-- Requests made to OLWLG or BoardGameGeek are sent directly to those services
-  over HTTPS and may use the user's existing signed-in session. Their handling
-  of those requests is governed by their own policies.
+- When an item catalog is opened, the extension sends the public numeric BGG
+  item identifiers already present in OLWLG's links directly to the
+  BoardGameGeek XML API over HTTPS. It does not include participant usernames,
+  want-list state, or other OLWLG page content in those API requests.
+- Other requests made to OLWLG or BoardGameGeek may use the user's existing
+  signed-in session. Their handling of those requests is governed by their own
+  policies.
 
 ## Sharing and sale
 
@@ -61,9 +70,10 @@ data-collection service.
 ## Retention and user control
 
 Users can disable the extension from its toolbar popup or remove it through
-Chrome. Chrome Sync data is controlled through the user's Chrome account.
-Locally stored OLWLG state can be removed through the browser's site-data
-controls for `bgg.activityclub.org`.
+Chrome. Removing the extension also removes its cached BGG image URLs. Chrome
+Sync data is controlled through the user's Chrome account. Locally stored
+OLWLG state can be removed through the browser's site-data controls for
+`bgg.activityclub.org`.
 
 ## Changes
 
@@ -74,4 +84,3 @@ privacy disclosures will be updated before the changed behavior is released.
 
 Questions about this policy can be sent to
 [olwlg.beautifier@gmail.com](mailto:olwlg.beautifier@gmail.com).
-

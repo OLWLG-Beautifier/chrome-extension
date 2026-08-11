@@ -5,6 +5,39 @@ import { build, transform } from "esbuild";
 const root = process.cwd();
 const outDir = join(root, "dist");
 
+async function localEnvValue(name) {
+  const processValue = process.env[name]?.trim();
+  if (processValue) return processValue;
+
+  try {
+    const contents = await readFile(join(root, ".env.local"), "utf8");
+    for (const sourceLine of contents.split(/\r?\n/)) {
+      const line = sourceLine.trim();
+      if (!line || line.startsWith("#")) continue;
+      const match = line.match(/^export\s+([A-Z_][A-Z0-9_]*)\s*=\s*(.*)$/i) ??
+        line.match(/^([A-Z_][A-Z0-9_]*)\s*=\s*(.*)$/i);
+      if (!match || match[1] !== name) continue;
+      const value = match[2].trim();
+      if (
+        (value.startsWith('"') && value.endsWith('"')) ||
+        (value.startsWith("'") && value.endsWith("'"))
+      )
+        return value.slice(1, -1).trim();
+      return value.replace(/\s+#.*$/, "").trim();
+    }
+  } catch (error) {
+    if (error?.code !== "ENOENT") throw error;
+  }
+  return "";
+}
+
+const bggApiToken = await localEnvValue("BGG_API_TOKEN");
+if (!bggApiToken) {
+  console.warn(
+    "BGG_API_TOKEN is not set; catalog cover images will be disabled.",
+  );
+}
+
 await mkdir(join(outDir, "assets"), { recursive: true });
 
 const exportedHtml = await readFile(join(root, "out/index.html"), "utf8");
@@ -81,7 +114,7 @@ const selectedIcons = Object.fromEntries(
 );
 
 await build({
-  entryPoints: [join(root, "extension/content/beautifier.ts")],
+  entryPoints: [join(root, "extension/content/index.ts")],
   bundle: true,
   format: "iife",
   target: "chrome120",
@@ -91,6 +124,20 @@ await build({
   legalComments: "none",
   define: {
     __OLWLG_ICONIFY_ICONS__: JSON.stringify(selectedIcons),
+  },
+});
+
+await build({
+  entryPoints: [join(root, "extension/background/index.ts")],
+  bundle: true,
+  format: "iife",
+  target: "chrome120",
+  outfile: join(outDir, "background.js"),
+  minify: true,
+  sourcemap: false,
+  legalComments: "none",
+  define: {
+    __BGG_API_TOKEN__: JSON.stringify(bggApiToken),
   },
 });
 
@@ -109,7 +156,6 @@ for (const [source, destination] of assets) {
 
 const minifiedAssets = [
   ["public/popup.js", "popup.js", "js"],
-  ["extension/content/beautifier.css", "content/beautifier.css", "css"],
 ];
 
 for (const [source, destination, loader] of minifiedAssets) {
@@ -124,6 +170,16 @@ for (const [source, destination, loader] of minifiedAssets) {
   await mkdir(dirname(target), { recursive: true });
   await writeFile(target, result.code);
 }
+
+await mkdir(join(outDir, "content"), { recursive: true });
+await build({
+  entryPoints: [join(root, "extension/content/styles/index.css")],
+  bundle: true,
+  outfile: join(outDir, "content/beautifier.css"),
+  minify: true,
+  target: "chrome120",
+  legalComments: "none",
+});
 
 await cp(join(root, "extension/icons"), join(outDir, "icons"), {
   recursive: true,
